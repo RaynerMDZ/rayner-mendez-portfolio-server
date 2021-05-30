@@ -14,38 +14,38 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "/api/v1/user/")
+@RequestMapping(value = "/api/v1/users/")
 @CrossOrigin(value = "${cross.origin.url}")
 public class UserController {
 
     private final UserService userService;
 
-    @PostMapping(value = "save")
+    @PostMapping
     public ResponseEntity<User> saveUser(User user) {
         return null;
     }
 
-    @GetMapping(value = "users")
-    public ResponseEntity<List<User>> getUserById() {
+    @GetMapping
+    public ResponseEntity<List<User>> getUsers() {
         return null;
     }
 
     @GetMapping(value = "{userId}")
     public ResponseEntity<User> getUserById(@PathVariable("userId") UUID userId) {
 
-        Optional<User> user = this.userService.getUserById(userId);
+        return new ResponseEntity<>(this.userService.getUserById(userId), HttpStatus.OK);
 
-        return user.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(new User(), HttpStatus.NOT_FOUND));
+//        return user.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+//                .orElseGet(() -> new ResponseEntity<>(new User(), HttpStatus.NOT_FOUND));
 
     }
 
-    @PatchMapping(value = "{id}/update")
+    @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User user) {
         return null;
     }
 
-    @PatchMapping(value = "{id}/delete")
+    @DeleteMapping(value = "{id}")
     public ResponseEntity<Boolean> deleteUser(@PathVariable(value = "id") UUID userId) {
         return null;
     }

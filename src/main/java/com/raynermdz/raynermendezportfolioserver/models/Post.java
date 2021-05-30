@@ -1,6 +1,9 @@
 package com.raynermdz.raynermendezportfolioserver.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,6 +15,8 @@ import java.util.List;
 import static javax.persistence.TemporalType.DATE;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(
         name = "post",
@@ -50,6 +55,7 @@ public class Post extends BaseEntity {
     private Picture postPicture;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private User user;
 
     @OneToMany(

@@ -11,13 +11,13 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/api/v1/service/")
+@RequestMapping(value = "/api/v1/services/")
 @CrossOrigin(value = "${cross.origin.url}")
 public class ServiceController {
 
     private final ServicesService servicesService;
 
-    @PostMapping(value = "save")
+    @PostMapping
     public ResponseEntity<Service> saveSkill(Service service) {
         return null;
     }
@@ -32,22 +32,22 @@ public class ServiceController {
         return null;
     }
 
-    @PatchMapping(value = "update")
+    @PutMapping
     public ResponseEntity<Service> updateService(Service service) {
         return null;
     }
 
-    @PutMapping(value = "{serviceId}/delete")
+    @DeleteMapping(value = "{serviceId}")
     public ResponseEntity<Boolean> deleteService(@PathVariable(value = "serviceId") UUID serviceId) {
         return null;
     }
 
-    @PutMapping(value = "{serviceId}/activate")
+    @PatchMapping(value = "{serviceId}/activate")
     public ResponseEntity<Boolean> activateService(@PathVariable(value = "serviceId") UUID serviceId) {
         return null;
     }
 
-    @PutMapping(value = "{serviceId}/deactivate")
+    @PatchMapping(value = "{serviceId}/deactivate")
     public ResponseEntity<Boolean> deactivateService(@PathVariable(value = "serviceId") UUID serviceId) {
         return null;
     }

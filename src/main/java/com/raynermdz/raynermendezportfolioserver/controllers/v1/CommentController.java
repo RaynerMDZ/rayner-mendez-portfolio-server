@@ -12,13 +12,13 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/api/v1/comment/")
+@RequestMapping(value = "/api/v1/comments/")
 @CrossOrigin(value = "${cross.origin.url}")
 public class CommentController {
 
     private final CommentService commentService;
 
-    @PostMapping(value = "save")
+    @PostMapping
     public ResponseEntity<Comment> saveComment(Skill Skill) {
         return null;
     }
@@ -33,22 +33,22 @@ public class CommentController {
         return null;
     }
 
-    @PatchMapping(value = "update")
+    @PutMapping
     public ResponseEntity<Comment> updateComment(Comment comment) {
         return null;
     }
 
-    @PutMapping(value = "{commentId}/delete")
+    @DeleteMapping(value = "{commentId}")
     public ResponseEntity<Boolean> deleteComment(@PathVariable(value = "commentId") UUID commentId) {
         return null;
     }
 
-    @PutMapping(value = "{commentId}/activate")
+    @PatchMapping(value = "{commentId}/activate")
     public ResponseEntity<Boolean> activateComment(@PathVariable(value = "commentId") UUID commentId) {
         return null;
     }
 
-    @PutMapping(value = "{commentId}/deactivate")
+    @PatchMapping(value = "{commentId}/deactivate")
     public ResponseEntity<Boolean> deactivateComment(@PathVariable(value = "commentId") UUID commentId) {
         return null;
     }

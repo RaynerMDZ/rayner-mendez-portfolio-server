@@ -3,6 +3,7 @@ package com.raynermdz.raynermendezportfolioserver.controllers.v1;
 import com.raynermdz.raynermendezportfolioserver.models.Post;
 import com.raynermdz.raynermendezportfolioserver.services.PostService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,13 +12,13 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/api/v1/post/")
+@RequestMapping(value = "/api/v1/posts/")
 @CrossOrigin(value = "${cross.origin.url}")
 public class PostController {
 
     private final PostService postService;
 
-    @PostMapping(value = "save")
+    @PostMapping
     public ResponseEntity<Post> savePost(Post post) {
         return null;
     }
@@ -29,25 +30,25 @@ public class PostController {
 
     @GetMapping(value = "{postId}")
     public ResponseEntity<Post> getPostById(@PathVariable(value = "postId") UUID postId) {
-        return null;
+        return new ResponseEntity<>(this.postService.getPostById(postId).get(), HttpStatus.OK);
     }
 
-    @PatchMapping(value = "update")
+    @PutMapping
     public ResponseEntity<Post> updatePost(Post post) {
         return null;
     }
 
-    @PutMapping(value = "{postId}/delete")
+    @DeleteMapping(value = "{postId}")
     public ResponseEntity<Boolean> deletePost(@PathVariable(value = "postId") UUID postId) {
         return null;
     }
 
-    @PutMapping(value = "{postId}/activate")
+    @PatchMapping(value = "{postId}/activate")
     public ResponseEntity<Boolean> activatePost(@PathVariable(value = "postId") UUID postId) {
         return null;
     }
 
-    @PutMapping(value = "{postId}/deactivate")
+    @PatchMapping(value = "{postId}/deactivate")
     public ResponseEntity<Boolean> deactivatePost(@PathVariable(value = "postId") UUID postId) {
         return null;
     }

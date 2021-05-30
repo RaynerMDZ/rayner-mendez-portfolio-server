@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface PictureService {
     Optional<List<Picture>> getAllPicturesByPostId(UUID postId);
-    Optional<Picture> getPictureById(UUID pictureId);
+    Optional<Picture> getPostPictureById(UUID pictureId);
     Optional<Picture> savePostPicture(UUID postId, MultipartFile picture);
     Optional<Picture> updatePostPicture(UUID postId, MultipartFile picture);
     Optional<Picture> savePostMainPicture(UUID postId, MultipartFile picture);

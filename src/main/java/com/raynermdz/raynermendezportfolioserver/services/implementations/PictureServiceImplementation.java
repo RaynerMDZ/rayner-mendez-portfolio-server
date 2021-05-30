@@ -27,7 +27,7 @@ public class PictureServiceImplementation implements PictureService {
     }
 
     @Override
-    public Optional<Picture> getPictureById(UUID pictureId) {
+    public Optional<Picture> getPostPictureById(UUID pictureId) {
         return Optional.empty();
     }
 

@@ -10,6 +10,8 @@ import java.util.List;
 import static javax.persistence.TemporalType.DATE;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(
@@ -67,24 +69,21 @@ public class User extends BaseEntity {
 
     @OneToMany(
             mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            cascade = CascadeType.ALL
     )
     @Column(name = "services", unique = false, nullable = true)
     private List<Service> services;
 
     @OneToMany(
             mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            cascade = CascadeType.ALL
     )
     @Column(name = "skills", unique = false, nullable = true)
     private List<Skill> skills;
 
     @OneToMany(
             mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            cascade = CascadeType.ALL
     )
     @Column(name = "posts", unique = false, nullable = true)
     private List<Post> posts;

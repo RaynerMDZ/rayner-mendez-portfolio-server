@@ -1,5 +1,6 @@
 package com.raynermdz.raynermendezportfolioserver.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -35,5 +36,6 @@ public class Comment extends BaseEntity {
     private Boolean isHidden;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Post post;
 }

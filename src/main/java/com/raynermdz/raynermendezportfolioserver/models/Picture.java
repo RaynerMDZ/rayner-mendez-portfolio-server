@@ -1,5 +1,6 @@
 package com.raynermdz.raynermendezportfolioserver.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,6 +39,7 @@ public class Picture extends BaseEntity {
     private Date modifiedDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Post post;
 
 //    @OneToOne

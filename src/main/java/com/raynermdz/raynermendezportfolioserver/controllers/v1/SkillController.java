@@ -11,13 +11,13 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/api/v1/skill/")
+@RequestMapping(value = "/api/v1/skills/")
 @CrossOrigin(value = "${cross.origin.url}")
 public class SkillController {
 
     private final SkillService skillService;
 
-    @PostMapping(value = "save")
+    @PostMapping
     public ResponseEntity<Skill> saveSkill(Skill Skill) {
         return null;
     }
@@ -32,22 +32,22 @@ public class SkillController {
         return null;
     }
 
-    @PatchMapping(value = "update")
+    @PutMapping
     public ResponseEntity<Skill> updateSkill(Skill skill) {
         return null;
     }
 
-    @PutMapping(value = "{skillId}/delete")
+    @DeleteMapping(value = "{skillId}")
     public ResponseEntity<Boolean> deleteSkill(@PathVariable(value = "skillId") UUID skillId) {
         return null;
     }
 
-    @PutMapping(value = "{skillId}/activate")
+    @PatchMapping(value = "{skillId}/activate")
     public ResponseEntity<Boolean> activateSkill(@PathVariable(value = "skillId") UUID skillId) {
         return null;
     }
 
-    @PutMapping(value = "{skillId}/deactivate")
+    @PatchMapping(value = "{skillId}/deactivate")
     public ResponseEntity<Boolean> deactivateSkill(@PathVariable(value = "skillId") UUID skillId) {
         return null;
     }

@@ -20,7 +20,7 @@ public class PostServiceImplementation implements PostService {
 
     @Override
     public Optional<Post> savePost(Post post) {
-        return Optional.empty();
+        return Optional.of(this.postRepository.save(post));
     }
 
     @Override
@@ -30,7 +30,8 @@ public class PostServiceImplementation implements PostService {
 
     @Override
     public Optional<Post> getPostById(UUID postId) {
-        return Optional.empty();
+
+        return this.postRepository.findById(postId);
     }
 
     @Override
