@@ -17,9 +17,12 @@ import static javax.persistence.TemporalType.DATE;
 )
 public class Picture extends BaseEntity {
 
+    @Column(name = "picture_name", unique = false, nullable = true)
+    private String pictureName;
+
     @Lob
-    @Column(name = "picture_string", unique = false, nullable = true)
-    private String pictureString;
+    @Column(name = "picture_url", unique = false, nullable = true)
+    private String pictureUrl;
 
     @Column(name = "is_hidden", unique = false, nullable = true)
     private Boolean isHidden;

@@ -6,11 +6,12 @@ import com.raynermdz.raynermendezportfolioserver.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
 @AllArgsConstructor
+@Service
 public class UserServiceImplementation implements UserService {
 
     private final UserRepository userRepository;
@@ -21,7 +22,32 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public Optional<User> getUserById(UUID postId) {
-        return this.userRepository.findById(postId);
+    public Optional<User> getUserById(UUID userId) {
+        return this.userRepository.findById(userId);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return null;
+    }
+
+    @Override
+    public Optional<User> updateUser(User user) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Boolean deleteUser(UUID userId) {
+        return null;
+    }
+
+    @Override
+    public Boolean activateUser(UUID userId) {
+        return null;
+    }
+
+    @Override
+    public Boolean deactivateUser(UUID userId) {
+        return null;
     }
 }

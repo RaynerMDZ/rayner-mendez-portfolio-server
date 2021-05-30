@@ -24,39 +24,39 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-//        User user = new User();
-//        user.setAboutMe("");
-//        user.setGithub("");
-//        user.setLinkedIn("");
-//        user.setTwitter("");
-//        user.setYoutube("");
-//
+        User user = new User();
+        user.setAboutMe("");
+        user.setGithub("");
+        user.setLinkedIn("");
+        user.setTwitter("");
+        user.setYoutube("");
+
 //        Picture picture = new Picture();
 //        picture.setCreatedDate(new Date());
 //        picture.setIsHidden(false);
 //        picture.setPictureString(null);
 //        user.setPicture(picture);
-//
-//        Service service = new Service();
-//        List<Service> services = new ArrayList<>();
-//        services.add(service);
-//        user.setServices(services);
-//
-//        Post post = new Post();
-//        post.setCreatedDate(new Date());
-//        post.setIsHidden(false);
-//        post.setDescription("");
-//        post.setGitHub("");
-//        post.setTitle("");
-//        List<Post> posts = new ArrayList<>();
-//        List<Picture> pictures = new ArrayList<>();
-//        post.setPictures(pictures);
-//
-//        posts.add(post);
-//        user.setPosts(posts);
-//
-//        User returnedUser = this.userService.saveUser(user);
-//        System.out.println(returnedUser.getId());
+
+        Service service = new Service();
+        List<Service> services = new ArrayList<>();
+        services.add(service);
+        user.setServices(services);
+
+        Post post = new Post();
+        post.setCreatedDate(new Date());
+        post.setIsHidden(false);
+        post.setDescription("");
+        post.setGitHub("");
+        post.setTitle("");
+        List<Post> posts = new ArrayList<>();
+        List<Picture> pictures = new ArrayList<>();
+        post.setPictures(pictures);
+
+        posts.add(post);
+        user.setPosts(posts);
+
+        User returnedUser = this.userService.saveUser(user);
+        System.out.println(returnedUser.getId());
 
     }
 }

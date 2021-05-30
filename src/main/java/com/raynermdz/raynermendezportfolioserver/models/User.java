@@ -44,7 +44,7 @@ public class User extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @Column(name = "skills", unique = false, nullable = true)
-    private List<Skills> skills;
+    private List<Skill> skills;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @Column(name = "posts", unique = false, nullable = true)

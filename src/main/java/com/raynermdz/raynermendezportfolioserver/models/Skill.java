@@ -15,7 +15,7 @@ import static javax.persistence.TemporalType.DATE;
         uniqueConstraints = {@UniqueConstraint(columnNames = "id")},
         indexes = @Index(name = "skills_id", columnList = "id")
 )
-public class Skills extends BaseEntity {
+public class Skill extends BaseEntity {
 
     @Column(name = "skill")
     private String skill;
