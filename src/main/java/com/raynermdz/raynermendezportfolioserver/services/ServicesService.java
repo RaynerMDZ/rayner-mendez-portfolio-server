@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ServicesService {
-    Service saveService(Service service);
-    List<Service> getAllServicesByUserId(UUID userId);
+    Optional<Service> saveService(Service service);
+    Optional<List<Service>> getAllServicesByUserId(UUID userId);
     Optional<Service> getServiceById(UUID serviceId);
     Optional<Service> updateService(Service service);
     Boolean deleteService(UUID serviceId);

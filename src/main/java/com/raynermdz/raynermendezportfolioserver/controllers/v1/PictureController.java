@@ -1,6 +1,8 @@
 package com.raynermdz.raynermendezportfolioserver.controllers.v1;
 
 import com.raynermdz.raynermendezportfolioserver.models.Picture;
+import com.raynermdz.raynermendezportfolioserver.services.PictureService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,10 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@AllArgsConstructor
 @RestController
-@RequestMapping(value = "/api/v1/")
+@RequestMapping(value = "/api/v1/picture/")
 @CrossOrigin("*")
 public class PictureController {
+
+    private final PictureService pictureService;
+
+    @PostMapping(
+            value = "{postId}/post-picture",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE
+    )
+    public ResponseEntity<Picture> savePicture(@PathVariable("postId") UUID postId,
+                                               @RequestParam("picture") MultipartFile picture) {
+        return null;
+    }
 
     @GetMapping(value = "{postId}/pictures")
     public ResponseEntity<List<Picture>> getAllPicturesByPostId(@PathVariable("postId") UUID postId) {

@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface PostService {
-    Post savePost(Post post);
-    List<Post> getAllPostsByUserId(UUID userId);
+    Optional<Post> savePost(Post post);
+    Optional<List<Post>> getAllPostsByUserId(UUID userId);
     Optional<Post> getPostById(UUID postId);
     Optional<Post> updatePost(Post post);
     Boolean deletePost(UUID postId);

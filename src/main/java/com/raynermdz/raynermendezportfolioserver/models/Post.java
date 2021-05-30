@@ -45,15 +45,24 @@ public class Post extends BaseEntity {
     @Column(name = "is_hidden", unique = false, nullable = true)
     private Boolean isHidden;
 
-    @Column(name = "post_picture", unique = false, nullable = true)
+//    @Column(name = "post_picture", unique = false, nullable = true)
+    @OneToOne
     private Picture postPicture;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    @OneToMany(
+            mappedBy = "post",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<Picture> pictures = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    @OneToMany(
+            mappedBy = "post",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<Comment> comments = new ArrayList<>();
-
-    @ManyToOne
-    private User user;
 }

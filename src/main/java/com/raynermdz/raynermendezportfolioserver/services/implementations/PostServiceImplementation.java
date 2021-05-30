@@ -19,13 +19,13 @@ public class PostServiceImplementation implements PostService {
     private final UserRepository userRepository;
 
     @Override
-    public Post savePost(Post post) {
-        return null;
+    public Optional<Post> savePost(Post post) {
+        return Optional.empty();
     }
 
     @Override
-    public List<Post> getAllPostsByUserId(UUID userId) {
-        return null;
+    public Optional<List<Post>> getAllPostsByUserId(UUID userId) {
+        return Optional.empty();
     }
 
     @Override

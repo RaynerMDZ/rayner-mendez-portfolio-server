@@ -37,12 +37,12 @@ public class Picture extends BaseEntity {
     @Column(name = "modified_date", unique = false, nullable = true)
     private Date modifiedDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
-    @OneToOne
-    private Post mainPost;
-
-    @OneToOne
-    private User user;
+//    @OneToOne
+//    private Post postPicture;
+//
+//    @OneToOne
+//    private User user;
 }

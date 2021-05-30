@@ -19,13 +19,13 @@ public class SkillServiceImplementation implements SkillService {
     private final UserRepository userRepository;
 
     @Override
-    public Skill saveSkill(Skill Skill) {
-        return null;
+    public Optional<Skill> saveSkill(Skill Skill) {
+        return Optional.empty();
     }
 
     @Override
-    public List<Skill> getAllSkillsByUserId(UUID userId) {
-        return null;
+    public Optional<List<Skill>> getAllSkillsByUserId(UUID userId) {
+        return Optional.empty();
     }
 
     @Override

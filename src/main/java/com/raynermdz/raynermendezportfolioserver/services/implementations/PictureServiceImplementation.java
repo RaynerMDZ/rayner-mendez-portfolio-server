@@ -1,14 +1,14 @@
 package com.raynermdz.raynermendezportfolioserver.services.implementations;
 
 import com.raynermdz.raynermendezportfolioserver.models.Picture;
-import com.raynermdz.raynermendezportfolioserver.models.Post;
 import com.raynermdz.raynermendezportfolioserver.repositories.PictureRepository;
 import com.raynermdz.raynermendezportfolioserver.repositories.PostRepository;
+import com.raynermdz.raynermendezportfolioserver.repositories.UserRepository;
 import com.raynermdz.raynermendezportfolioserver.services.PictureService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -19,19 +19,11 @@ public class PictureServiceImplementation implements PictureService {
 
     private final PictureRepository pictureRepository;
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
     @Override
-    public Picture savePicture(Picture picture) {
-        return null;
-    }
-
-    @Override
-    public List<Picture> getAllPicturesByPostId(UUID postId) {
-        Optional<Post> post = this.postRepository.findById(postId);
-        if (post.isPresent()) {
-            return post.get().getPictures();
-        }
-        return new ArrayList<>();
+    public Optional<List<Picture>> getAllPicturesByPostId(UUID postId) {
+        return Optional.empty();
     }
 
     @Override
@@ -40,22 +32,77 @@ public class PictureServiceImplementation implements PictureService {
     }
 
     @Override
-    public Optional<Picture> updatePicture(Picture picture) {
+    public Optional<Picture> savePostPicture(UUID postId, MultipartFile picture) {
         return Optional.empty();
     }
 
     @Override
-    public Boolean deletePicture(UUID pictureId) {
+    public Optional<Picture> updatePostPicture(UUID postId, MultipartFile picture) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Picture> savePostMainPicture(UUID postId, MultipartFile picture) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Picture> updatePostMainPicture(UUID postId, MultipartFile picture) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Picture> saveUserPicture(UUID userId, MultipartFile picture) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Picture> updateUserPicture(UUID userId, MultipartFile picture) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Boolean deletePostPicture(UUID postId, UUID pictureId) {
         return null;
     }
 
     @Override
-    public Boolean activatePicture(UUID pictureId) {
+    public Boolean activatePostPicture(UUID postId, UUID pictureId) {
         return null;
     }
 
     @Override
-    public Boolean deactivatePicture(UUID pictureId) {
+    public Boolean deactivatePostPicture(UUID postId, UUID pictureId) {
+        return null;
+    }
+
+    @Override
+    public Boolean deletePostMainPicture(UUID postId, UUID pictureId) {
+        return null;
+    }
+
+    @Override
+    public Boolean activatePostMainPicture(UUID postId, UUID pictureId) {
+        return null;
+    }
+
+    @Override
+    public Boolean deactivatePostMainPicture(UUID postId, UUID pictureId) {
+        return null;
+    }
+
+    @Override
+    public Boolean deleteUserPicture(UUID userId, UUID pictureId) {
+        return null;
+    }
+
+    @Override
+    public Boolean activateUserPicture(UUID userId, UUID pictureId) {
+        return null;
+    }
+
+    @Override
+    public Boolean deactivateUSerPicture(UUID userId, UUID pictureId) {
         return null;
     }
 }

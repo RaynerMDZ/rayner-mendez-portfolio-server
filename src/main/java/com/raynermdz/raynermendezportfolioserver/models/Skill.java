@@ -11,9 +11,9 @@ import static javax.persistence.TemporalType.DATE;
 @Data
 @Entity
 @Table(
-        name = "skills",
+        name = "skill",
         uniqueConstraints = {@UniqueConstraint(columnNames = "id")},
-        indexes = @Index(name = "skills_id", columnList = "id")
+        indexes = @Index(name = "skill_id", columnList = "id")
 )
 public class Skill extends BaseEntity {
 
@@ -36,6 +36,6 @@ public class Skill extends BaseEntity {
     @Column(name = "modified_date", unique = false, nullable = true)
     private Date modifiedDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 }

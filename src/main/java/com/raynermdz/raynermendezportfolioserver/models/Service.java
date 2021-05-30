@@ -36,6 +36,6 @@ public class Service extends BaseEntity {
     @Column(name = "modified_date", unique = false, nullable = true)
     private Date modifiedDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 }

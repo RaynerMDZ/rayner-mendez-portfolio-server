@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface SkillService {
-    Skill saveSkill(Skill Skill);
-    List<Skill> getAllSkillsByUserId(UUID userId);
+    Optional<Skill> saveSkill(Skill Skill);
+    Optional<List<Skill>> getAllSkillsByUserId(UUID userId);
     Optional<Skill> getSkillById(UUID skillId);
     Optional<Skill> updateSkill(Skill skill);
     Boolean deleteSkill(UUID skillId);

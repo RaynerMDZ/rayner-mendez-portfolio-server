@@ -17,18 +17,18 @@ public class UserServiceImplementation implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User saveUser(User user) {
-        return this.userRepository.save(user);
+    public Optional<User> saveUser(User user) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<List<User>> getAllUsers() {
+        return Optional.empty();
     }
 
     @Override
     public Optional<User> getUserById(UUID userId) {
-        return this.userRepository.findById(userId);
-    }
-
-    @Override
-    public List<User> getAllUsers() {
-        return null;
+        return Optional.empty();
     }
 
     @Override

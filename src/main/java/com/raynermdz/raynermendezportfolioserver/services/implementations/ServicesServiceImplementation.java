@@ -18,13 +18,13 @@ public class ServicesServiceImplementation implements ServicesService {
     private final UserRepository userRepository;
 
     @Override
-    public Service saveService(Service service) {
-        return null;
+    public Optional<Service> saveService(Service service) {
+        return Optional.empty();
     }
 
     @Override
-    public List<Service> getAllServicesByUserId(UUID userId) {
-        return null;
+    public Optional<List<Service>> getAllServicesByUserId(UUID userId) {
+        return Optional.empty();
     }
 
     @Override

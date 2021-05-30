@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserService {
-    User saveUser(User user);
-    List<User> getAllUsers();
+    Optional<User> saveUser(User user);
+    Optional<List<User>> getAllUsers();
     Optional<User> getUserById(UUID userId);
     Optional<User> updateUser(User user);
     Boolean deleteUser(UUID userId);

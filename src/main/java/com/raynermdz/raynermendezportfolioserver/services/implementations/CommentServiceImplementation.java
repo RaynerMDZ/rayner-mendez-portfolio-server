@@ -19,13 +19,13 @@ public class CommentServiceImplementation implements CommentService {
     private final PostRepository postRepository;
 
     @Override
-    public Comment saveComment(Comment comment) {
-        return null;
+    public Optional<Comment> saveComment(Comment comment) {
+        return Optional.empty();
     }
 
     @Override
-    public List<Comment> getAllCommentsByPostId(UUID postId) {
-        return null;
+    public Optional<List<Comment>> getAllCommentsByPostId(UUID postId) {
+        return Optional.empty();
     }
 
     @Override
