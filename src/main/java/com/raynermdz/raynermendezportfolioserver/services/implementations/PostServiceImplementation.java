@@ -1,6 +1,7 @@
 package com.raynermdz.raynermendezportfolioserver.services.implementations;
 
 import com.raynermdz.raynermendezportfolioserver.models.Post;
+import com.raynermdz.raynermendezportfolioserver.models.User;
 import com.raynermdz.raynermendezportfolioserver.repositories.PostRepository;
 import com.raynermdz.raynermendezportfolioserver.repositories.UserRepository;
 import com.raynermdz.raynermendezportfolioserver.services.PostService;
@@ -25,13 +26,21 @@ public class PostServiceImplementation implements PostService {
 
     @Override
     public Optional<List<Post>> getAllPostsByUserId(UUID userId) {
+        Optional<User> user = this.userRepository.findById(userId);
+
+        if (user.isPresent()) {
+            return Optional.of(user.get().getPosts());
+        }
         return Optional.empty();
     }
 
     @Override
     public Optional<Post> getPostById(UUID postId) {
-
-        return this.postRepository.findById(postId);
+        Optional<Post> post = this.postRepository.findById(postId);
+        if (post.isPresent()) {
+            return this.postRepository.findById(postId);
+        }
+        return Optional.empty();
     }
 
     @Override
@@ -41,16 +50,36 @@ public class PostServiceImplementation implements PostService {
 
     @Override
     public Boolean deletePost(UUID postId) {
-        return null;
+        Optional<Post> post = this.postRepository.findById(postId);
+
+        if (post.isPresent()) {
+            this.postRepository.delete(post.get());
+            return true;
+        }
+        return false;
     }
 
     @Override
     public Boolean activatePost(UUID postId) {
-        return null;
+        Optional<Post> post = this.postRepository.findById(postId);
+
+        if (post.isPresent()) {
+            post.get().setIsHidden(true);
+            this.postRepository.save(post.get());
+            return true;
+        }
+        return false;
     }
 
     @Override
     public Boolean deactivatePost(UUID postId) {
-        return null;
+        Optional<Post> post = this.postRepository.findById(postId);
+
+        if (post.isPresent()) {
+            post.get().setIsHidden(false);
+            this.postRepository.save(post.get());
+            return true;
+        }
+        return false;
     }
 }

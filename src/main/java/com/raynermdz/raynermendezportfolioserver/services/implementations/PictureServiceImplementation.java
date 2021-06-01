@@ -1,6 +1,7 @@
 package com.raynermdz.raynermendezportfolioserver.services.implementations;
 
 import com.raynermdz.raynermendezportfolioserver.models.Picture;
+import com.raynermdz.raynermendezportfolioserver.models.Post;
 import com.raynermdz.raynermendezportfolioserver.repositories.PictureRepository;
 import com.raynermdz.raynermendezportfolioserver.repositories.PostRepository;
 import com.raynermdz.raynermendezportfolioserver.repositories.UserRepository;
@@ -23,11 +24,22 @@ public class PictureServiceImplementation implements PictureService {
 
     @Override
     public Optional<List<Picture>> getAllPicturesByPostId(UUID postId) {
+        Optional<Post> post = this.postRepository.findById(postId);
+
+        if (post.isPresent()) {
+            return Optional.of(post.get().getPictures());
+        }
         return Optional.empty();
     }
 
     @Override
     public Optional<Picture> getPostPictureById(UUID pictureId) {
+        Optional<Picture> picture = this.pictureRepository.findById(pictureId);
+
+        if (picture.isPresent()) {
+            return picture;
+        }
+
         return Optional.empty();
     }
 
@@ -93,7 +105,15 @@ public class PictureServiceImplementation implements PictureService {
 
     @Override
     public Boolean deleteUserPicture(UUID userId, UUID pictureId) {
-        return null;
+        if (this.userRepository.findById(userId).isPresent()) {
+            Optional<Picture> picture = this.pictureRepository.findById(pictureId);
+            if (picture.isPresent()) {
+                this.pictureRepository.delete(picture.get());
+                return false;
+            }
+            return false;
+        }
+        return false;
     }
 
     @Override
