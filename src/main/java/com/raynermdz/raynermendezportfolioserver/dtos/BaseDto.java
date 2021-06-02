@@ -1,5 +1,6 @@
 package com.raynermdz.raynermendezportfolioserver.dtos;
 
+import com.raynermdz.raynermendezportfolioserver.dtos.converter.DtoEntity;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -7,7 +8,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Data
-public abstract class BaseEntityDto implements Serializable {
+public abstract class BaseDto implements Serializable, DtoEntity {
 
     private UUID id;
 
@@ -15,7 +16,7 @@ public abstract class BaseEntityDto implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BaseEntityDto that = (BaseEntityDto) o;
+        BaseDto that = (BaseDto) o;
         return Objects.equals(this.id, that.id);
     }
 

@@ -1,7 +1,7 @@
 package com.raynermdz.raynermendezportfolioserver.controllers.v1;
 
-import com.raynermdz.raynermendezportfolioserver.models.Comment;
-import com.raynermdz.raynermendezportfolioserver.models.Skill;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.CommentRequestDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.CommentResponseDto;
 import com.raynermdz.raynermendezportfolioserver.services.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,22 +19,22 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping
-    public ResponseEntity<Comment> saveComment(Skill Skill) {
+    public ResponseEntity<CommentResponseDto> saveComment(CommentRequestDto comment) {
         return null;
     }
 
     @GetMapping(value = "{postId}/post-comments")
-    public ResponseEntity<List<Comment>> getAllCommentsByPostId(@PathVariable(value = "postId") UUID postId) {
+    public ResponseEntity<List<CommentResponseDto>> getAllCommentsByPostId(@PathVariable(value = "postId") UUID postId) {
         return null;
     }
 
     @GetMapping(value = "{commentId}")
-    public ResponseEntity<Comment> getCommentById(@PathVariable(value = "commentId") UUID commentId) {
+    public ResponseEntity<CommentResponseDto> getCommentById(@PathVariable(value = "commentId") UUID commentId) {
         return null;
     }
 
     @PutMapping
-    public ResponseEntity<Comment> updateComment(Comment comment) {
+    public ResponseEntity<CommentResponseDto> updateComment(CommentRequestDto comment) {
         return null;
     }
 

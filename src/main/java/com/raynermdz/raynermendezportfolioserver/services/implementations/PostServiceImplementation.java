@@ -1,5 +1,10 @@
 package com.raynermdz.raynermendezportfolioserver.services.implementations;
 
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.MinimalUserDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.PostDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.UserDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.converter.DtoConverter;
+import com.raynermdz.raynermendezportfolioserver.exception.EntityNotFoundException;
 import com.raynermdz.raynermendezportfolioserver.models.Post;
 import com.raynermdz.raynermendezportfolioserver.models.User;
 import com.raynermdz.raynermendezportfolioserver.repositories.PostRepository;
@@ -18,6 +23,7 @@ public class PostServiceImplementation implements PostService {
 
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final DtoConverter dtoConverter;
 
     @Override
     public Optional<Post> savePost(Post post) {
@@ -35,12 +41,18 @@ public class PostServiceImplementation implements PostService {
     }
 
     @Override
-    public Optional<Post> getPostById(UUID postId) {
-        Optional<Post> post = this.postRepository.findById(postId);
-        if (post.isPresent()) {
-            return this.postRepository.findById(postId);
+    public Optional<PostDto> getPostById(UUID postId) throws EntityNotFoundException {
+        Optional<Post> foundPost = this.postRepository.findById(postId);
+
+        if (foundPost.isPresent()) {
+            Optional<User> foundUser = this.userRepository.findById(foundPost.get().getUser().getId());
+
+            PostDto postDto = (PostDto) this.dtoConverter.convertToDto(foundPost.get(), new PostDto());
+            postDto.setUser((MinimalUserDto) this.dtoConverter.convertToDto(foundUser.get(), new MinimalUserDto()));
+
+            return Optional.of(postDto);
         }
-        return Optional.empty();
+        throw new EntityNotFoundException(Post.class, "id", postId.toString());
     }
 
     @Override

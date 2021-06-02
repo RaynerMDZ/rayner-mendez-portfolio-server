@@ -1,5 +1,8 @@
 package com.raynermdz.raynermendezportfolioserver.controllers.v1;
 
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.PostRequestDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.PostResponseDto;
+import com.raynermdz.raynermendezportfolioserver.exception.EntityNotFoundException;
 import com.raynermdz.raynermendezportfolioserver.models.Post;
 import com.raynermdz.raynermendezportfolioserver.services.PostService;
 import lombok.AllArgsConstructor;
@@ -19,7 +22,7 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
-    public ResponseEntity<Post> savePost(Post post) {
+    public ResponseEntity<PostResponseDto> savePost(PostRequestDto post) {
         return null;
     }
 
@@ -29,12 +32,12 @@ public class PostController {
     }
 
     @GetMapping(value = "{postId}")
-    public ResponseEntity<Post> getPostById(@PathVariable(value = "postId") UUID postId) {
+    public ResponseEntity<PostResponseDto> getPostById(@PathVariable(value = "postId") UUID postId) throws EntityNotFoundException {
         return new ResponseEntity<>(this.postService.getPostById(postId).get(), HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<Post> updatePost(Post post) {
+    public ResponseEntity<PostResponseDto> updatePost(PostRequestDto post) {
         return null;
     }
 

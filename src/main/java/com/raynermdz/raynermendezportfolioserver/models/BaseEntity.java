@@ -1,5 +1,6 @@
 package com.raynermdz.raynermendezportfolioserver.models;
 
+import com.raynermdz.raynermendezportfolioserver.dtos.converter.DtoEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.GenericGenerator;
@@ -11,7 +12,7 @@ import java.util.UUID;
 
 @MappedSuperclass
 @Data
-public abstract class BaseEntity implements Serializable {
+public abstract class BaseEntity implements Serializable, DtoEntity {
 
     @Id
     @GeneratedValue(generator = "uuid2")

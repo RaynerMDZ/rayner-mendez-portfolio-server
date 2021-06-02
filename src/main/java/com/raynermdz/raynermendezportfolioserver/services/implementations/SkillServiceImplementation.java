@@ -1,6 +1,8 @@
 package com.raynermdz.raynermendezportfolioserver.services.implementations;
 
-import com.raynermdz.raynermendezportfolioserver.models.Skill;
+import com.raynermdz.raynermendezportfolioserver.dtos.converter.DtoConverter;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.SkillRequestDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.SkillResponseDto;
 import com.raynermdz.raynermendezportfolioserver.repositories.SkillRepository;
 import com.raynermdz.raynermendezportfolioserver.repositories.UserRepository;
 import com.raynermdz.raynermendezportfolioserver.services.SkillService;
@@ -17,24 +19,25 @@ public class SkillServiceImplementation implements SkillService {
 
     private final SkillRepository skillRepository;
     private final UserRepository userRepository;
+    private final DtoConverter dtoConverter;
 
     @Override
-    public Optional<Skill> saveSkill(Skill Skill) {
+    public Optional<SkillResponseDto> saveSkill(SkillRequestDto Skill) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<List<Skill>> getAllSkillsByUserId(UUID userId) {
+    public Optional<List<SkillResponseDto>> getAllSkillsByUserId(UUID userId) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Skill> getSkillById(UUID skillId) {
+    public Optional<SkillResponseDto> getSkillById(UUID skillId) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Skill> updateSkill(Skill skill) {
+    public Optional<SkillResponseDto> updateSkill(SkillRequestDto skill) {
         return Optional.empty();
     }
 

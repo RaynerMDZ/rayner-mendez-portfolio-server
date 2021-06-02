@@ -1,5 +1,7 @@
 package com.raynermdz.raynermendezportfolioserver.services;
 
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.SkillRequestDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.SkillResponseDto;
 import com.raynermdz.raynermendezportfolioserver.models.Skill;
 
 import java.util.List;
@@ -7,10 +9,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface SkillService {
-    Optional<Skill> saveSkill(Skill Skill);
-    Optional<List<Skill>> getAllSkillsByUserId(UUID userId);
-    Optional<Skill> getSkillById(UUID skillId);
-    Optional<Skill> updateSkill(Skill skill);
+    Optional<SkillResponseDto> saveSkill(SkillRequestDto Skill);
+    Optional<List<SkillResponseDto>> getAllSkillsByUserId(UUID userId);
+    Optional<SkillResponseDto> getSkillById(UUID skillId);
+    Optional<SkillResponseDto> updateSkill(SkillRequestDto skill);
     Boolean deleteSkill(UUID skillId);
     Boolean activateSkill(UUID skillId);
     Boolean deactivateSkill(UUID skillId);

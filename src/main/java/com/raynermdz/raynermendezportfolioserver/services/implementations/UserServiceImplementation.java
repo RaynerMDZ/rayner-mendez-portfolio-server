@@ -1,5 +1,8 @@
 package com.raynermdz.raynermendezportfolioserver.services.implementations;
 
+import com.raynermdz.raynermendezportfolioserver.dtos.converter.DtoConverter;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.UserRequestDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.UserResponseDto;
 import com.raynermdz.raynermendezportfolioserver.models.User;
 import com.raynermdz.raynermendezportfolioserver.repositories.UserRepository;
 import com.raynermdz.raynermendezportfolioserver.services.UserService;
@@ -15,28 +18,31 @@ import java.util.UUID;
 public class UserServiceImplementation implements UserService {
 
     private final UserRepository userRepository;
+    private final DtoConverter dtoConverter;
 
     @Override
-    public User saveUser(User user) {
-        return this.userRepository.save(user);
-    }
-
-    @Override
-    public List<User> getAllUsers() {
+    public Optional<UserResponseDto> saveUser(UserRequestDto user) {
         return null;
     }
 
     @Override
-    public User getUserById(UUID userId) {
-        return this.userRepository.findById(userId).get();
+    public Optional<List<UserResponseDto>> getAllUsers() {
+        return null;
     }
 
     @Override
-    public User updateUser(User user) {
+    public Optional<UserResponseDto> getUserById(UUID userId) {
+        return Optional.of((UserResponseDto) this.dtoConverter.convertToDto(this.userRepository.findById(userId).get(), new UserResponseDto()));
+    }
+
+    @Override
+    public Optional<UserResponseDto> updateUser(UserRequestDto userRequestDto) {
+        User user = (User) this.dtoConverter.convertToEntity(userRequestDto, new User());
+        
         if (this.userRepository.findById(user.getId()).isPresent()) {
-            return this.userRepository.save(user);
+            return Optional.of((UserResponseDto) this.dtoConverter.convertToDto(this.userRepository.save(user), new UserResponseDto()));
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override

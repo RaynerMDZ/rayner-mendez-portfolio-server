@@ -1,5 +1,7 @@
 package com.raynermdz.raynermendezportfolioserver.controllers.v1;
 
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.ServiceRequestDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.ServiceResponseDto;
 import com.raynermdz.raynermendezportfolioserver.models.Service;
 import com.raynermdz.raynermendezportfolioserver.services.ServicesService;
 import lombok.AllArgsConstructor;
@@ -18,7 +20,7 @@ public class ServiceController {
     private final ServicesService servicesService;
 
     @PostMapping
-    public ResponseEntity<Service> saveSkill(Service service) {
+    public ResponseEntity<ServiceResponseDto> saveSkill(ServiceRequestDto service) {
         return null;
     }
 
@@ -28,12 +30,12 @@ public class ServiceController {
     }
 
     @GetMapping(value = "{serviceId}")
-    public ResponseEntity<Service> getSkillById(@PathVariable(value = "serviceId") UUID serviceId) {
+    public ResponseEntity<ServiceResponseDto> getSkillById(@PathVariable(value = "serviceId") UUID serviceId) {
         return null;
     }
 
     @PutMapping
-    public ResponseEntity<Service> updateService(Service service) {
+    public ResponseEntity<ServiceResponseDto> updateService(ServiceRequestDto service) {
         return null;
     }
 

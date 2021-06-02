@@ -4,13 +4,12 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
 public class EntityNotFoundException extends RuntimeException {
 
     public EntityNotFoundException(Class clazz, String... searchParamsMap) {
-        super(EntityNotFoundException.generateMessage(clazz.getSimpleName(), toMap(String.class, String.class, searchParamsMap)));
+        super(EntityNotFoundException.generateMessage(clazz.getSimpleName(), toMap((Object) searchParamsMap)));
     }
 
     private static String generateMessage(String entity, Map<String, String> searchParams) {
@@ -20,12 +19,12 @@ public class EntityNotFoundException extends RuntimeException {
     }
 
     private static <K, V> Map<K, V> toMap(
-            Class<K> keyType, Class<V> valueType, Object... entries) {
+            Object... entries) {
         if (entries.length % 2 == 1)
             throw new IllegalArgumentException("Invalid entries");
         return IntStream.range(0, entries.length / 2).map(i -> i * 2)
                 .collect(HashMap::new,
-                        (m, i) -> m.put(keyType.cast(entries[i]), valueType.cast(entries[i + 1])),
+                        (m, i) -> m.put(((Class<K>) String.class).cast(entries[i]), ((Class<V>) String.class).cast(entries[i + 1])),
                         Map::putAll);
     }
 }

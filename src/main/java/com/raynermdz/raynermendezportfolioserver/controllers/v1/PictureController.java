@@ -1,7 +1,7 @@
 package com.raynermdz.raynermendezportfolioserver.controllers.v1;
 
 import com.raynermdz.raynermendezportfolioserver.controllers.structure.PictureControllerStructure;
-import com.raynermdz.raynermendezportfolioserver.models.Picture;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.PictureResponseDto;
 import com.raynermdz.raynermendezportfolioserver.services.PictureService;
 import lombok.AllArgsConstructor;
 
@@ -22,52 +22,52 @@ public class PictureController implements PictureControllerStructure {
     private final PictureService pictureService;
 
     @Override
-    public ResponseEntity<List<Picture>> getAllPicturesByPostId(UUID postId) {
+    public ResponseEntity<List<PictureResponseDto>> getAllPicturesByPostId(UUID postId) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Picture> getPostPicture(UUID pictureId) {
+    public ResponseEntity<PictureResponseDto> getPostPicture(UUID pictureId) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Picture> savePostPicture(UUID postId, MultipartFile picture) {
+    public ResponseEntity<PictureResponseDto> savePostPicture(UUID postId, MultipartFile picture) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Picture> updatePostPicture(UUID postId, UUID pictureId, MultipartFile picture) {
+    public ResponseEntity<PictureResponseDto> updatePostPicture(UUID postId, UUID pictureId, MultipartFile picture) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Picture> getPostMainPictureByPostId(UUID postId) {
+    public ResponseEntity<PictureResponseDto> getPostMainPictureByPostId(UUID postId) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Picture> savePostMainPicture(UUID postId, MultipartFile picture) {
+    public ResponseEntity<PictureResponseDto> savePostMainPicture(UUID postId, MultipartFile picture) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Picture> updatePostMainPicture(UUID postId, MultipartFile picture) {
+    public ResponseEntity<PictureResponseDto> updatePostMainPicture(UUID postId, MultipartFile picture) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Picture> getUserPicture(UUID userId) {
+    public ResponseEntity<PictureResponseDto> getUserPicture(UUID userId) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Picture> saveUserPicture(UUID postId, MultipartFile picture) {
+    public ResponseEntity<PictureResponseDto> saveUserPicture(UUID postId, MultipartFile picture) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Picture> updateUserPicture(UUID userId, MultipartFile picture) {
+    public ResponseEntity<PictureResponseDto> updateUserPicture(UUID userId, MultipartFile picture) {
         return null;
     }
 

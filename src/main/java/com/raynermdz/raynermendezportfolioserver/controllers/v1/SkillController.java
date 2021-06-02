@@ -1,6 +1,7 @@
 package com.raynermdz.raynermendezportfolioserver.controllers.v1;
 
-import com.raynermdz.raynermendezportfolioserver.models.Skill;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.SkillRequestDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.SkillResponseDto;
 import com.raynermdz.raynermendezportfolioserver.services.SkillService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,22 +19,22 @@ public class SkillController {
     private final SkillService skillService;
 
     @PostMapping
-    public ResponseEntity<Skill> saveSkill(Skill Skill) {
+    public ResponseEntity<SkillResponseDto> saveSkill(SkillRequestDto Skill) {
         return null;
     }
 
     @GetMapping(value = "{userId}/user-skills")
-    public ResponseEntity<List<Skill>> getAllSkillsByUserId(@PathVariable(value = "userId") UUID userId) {
+    public ResponseEntity<List<SkillResponseDto>> getAllSkillsByUserId(@PathVariable(value = "userId") UUID userId) {
         return null;
     }
 
     @GetMapping(value = "{skillId}")
-    public ResponseEntity<Skill> getSkillById(@PathVariable(value = "skillId") UUID skillId) {
+    public ResponseEntity<SkillResponseDto> getSkillById(@PathVariable(value = "skillId") UUID skillId) {
         return null;
     }
 
     @PutMapping
-    public ResponseEntity<Skill> updateSkill(Skill skill) {
+    public ResponseEntity<SkillResponseDto> updateSkill(SkillRequestDto skill) {
         return null;
     }
 

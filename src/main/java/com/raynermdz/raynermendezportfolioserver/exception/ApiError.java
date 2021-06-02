@@ -108,7 +108,7 @@ public class ApiError {
     }
 
 
-    abstract class ApiSubError {
+    abstract static class ApiSubError {
 
     }
 

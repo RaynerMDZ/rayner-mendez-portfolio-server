@@ -1,13 +1,12 @@
-package com.raynermdz.raynermendezportfolioserver.dtos;
+package com.raynermdz.raynermendezportfolioserver.dtos.v1;
 
-import com.raynermdz.raynermendezportfolioserver.dtos.converter.DtoEntity;
-import com.raynermdz.raynermendezportfolioserver.models.Picture;
+import com.raynermdz.raynermendezportfolioserver.dtos.BaseDto;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class UserDto extends BaseEntityDto implements DtoEntity {
+public class UserDto extends BaseDto {
 
     private String firstName;
     private String middleName;
@@ -22,6 +21,6 @@ public class UserDto extends BaseEntityDto implements DtoEntity {
     private String youtube;
     private Date createdDate;
     private Date modifiedDate;
-    private Picture picture;
+    private PictureDto picture;
 
 }

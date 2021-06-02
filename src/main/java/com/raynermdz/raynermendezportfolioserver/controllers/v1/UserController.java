@@ -1,6 +1,7 @@
 package com.raynermdz.raynermendezportfolioserver.controllers.v1;
 
-import com.raynermdz.raynermendezportfolioserver.models.User;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.UserRequestDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.UserResponseDto;
 import com.raynermdz.raynermendezportfolioserver.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,17 +21,17 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> saveUser(User user) {
+    public ResponseEntity<UserResponseDto> saveUser(UserRequestDto user) {
         return null;
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getUsers() {
+    public ResponseEntity<List<UserResponseDto>> getUsers() {
         return null;
     }
 
     @GetMapping(value = "{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable("userId") UUID userId) {
+    public ResponseEntity<UserResponseDto> getUserById(@PathVariable("userId") UUID userId) {
 
         return new ResponseEntity<>(this.userService.getUserById(userId), HttpStatus.OK);
 
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @PutMapping
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
+    public ResponseEntity<UserResponseDto> updateUser(@RequestBody UserRequestDto user) {
         return null;
     }
 
