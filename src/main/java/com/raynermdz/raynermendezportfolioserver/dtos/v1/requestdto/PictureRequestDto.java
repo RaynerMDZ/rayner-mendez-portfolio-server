@@ -5,4 +5,6 @@ import lombok.Data;
 
 @Data
 public class PictureRequestDto extends BaseDto {
+    private String pictureName;
+    private String pictureUrl;
 }

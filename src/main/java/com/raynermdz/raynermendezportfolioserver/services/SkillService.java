@@ -9,10 +9,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface SkillService {
-    Optional<SkillResponseDto> saveSkill(SkillRequestDto Skill);
+    Optional<SkillResponseDto> saveSkill(SkillRequestDto Skill, UUID userId);
     Optional<List<SkillResponseDto>> getAllSkillsByUserId(UUID userId);
     Optional<SkillResponseDto> getSkillById(UUID skillId);
-    Optional<SkillResponseDto> updateSkill(SkillRequestDto skill);
+    Optional<SkillResponseDto> updateSkill(SkillRequestDto skill, UUID userId);
     Boolean deleteSkill(UUID skillId);
     Boolean activateSkill(UUID skillId);
     Boolean deactivateSkill(UUID skillId);

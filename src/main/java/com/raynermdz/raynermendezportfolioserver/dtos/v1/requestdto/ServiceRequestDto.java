@@ -5,4 +5,6 @@ import lombok.Data;
 
 @Data
 public class ServiceRequestDto extends BaseDto {
+    private String service;
+    private String description;
 }

@@ -3,6 +3,7 @@ package com.raynermdz.raynermendezportfolioserver.services.implementations;
 import com.raynermdz.raynermendezportfolioserver.dtos.converter.DtoConverter;
 import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.CommentRequestDto;
 import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.CommentResponseDto;
+import com.raynermdz.raynermendezportfolioserver.exception.EntityNotFoundException;
 import com.raynermdz.raynermendezportfolioserver.models.Comment;
 import com.raynermdz.raynermendezportfolioserver.models.Post;
 import com.raynermdz.raynermendezportfolioserver.repositories.CommentRepository;
@@ -11,10 +12,7 @@ import com.raynermdz.raynermendezportfolioserver.services.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @AllArgsConstructor
 @Service
@@ -25,11 +23,21 @@ public class CommentServiceImplementation implements CommentService {
     private final DtoConverter dtoConverter;
 
     @Override
-    public Optional<CommentResponseDto> saveComment(CommentRequestDto commentRequestDto) {
-        Comment comment = (Comment) this.dtoConverter.convertToEntity(commentRequestDto, new Comment());
-        Comment savedComment = this.commentRepository.save(comment);
-        CommentResponseDto response = (CommentResponseDto) this.dtoConverter.convertToDto(savedComment, new CommentResponseDto());
-        return Optional.of(response);
+    public Optional<CommentResponseDto> saveComment(CommentRequestDto commentRequestDto, UUID postId) {
+
+        Optional<Post> post = this.postRepository.findById(postId);
+
+        if (post.isPresent()) {
+            Comment comment = (Comment) this.dtoConverter.convertToEntity(commentRequestDto, new Comment());
+            comment.setIsHidden(false);
+            comment.setCreatedDate(new Date());
+            comment.setPost(post.get());
+
+            Comment savedComment = this.commentRepository.save(comment);
+            CommentResponseDto response = (CommentResponseDto) this.dtoConverter.convertToDto(savedComment, new CommentResponseDto());
+            return Optional.of(response);
+        }
+        throw new EntityNotFoundException(Post.class, "id", postId.toString());
     }
 
     @Override
@@ -57,7 +65,7 @@ public class CommentServiceImplementation implements CommentService {
     }
 
     @Override
-    public Optional<CommentResponseDto> updateComment(CommentRequestDto commentRequestDto) {
+    public Optional<CommentResponseDto> updateComment(CommentRequestDto commentRequestDto, UUID postId) {
         Comment comment = (Comment) this.dtoConverter.convertToEntity(commentRequestDto, new Comment());
         Optional<Comment> foundComment = this.commentRepository.findById(comment.getId());
 

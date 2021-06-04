@@ -1,9 +1,7 @@
 package com.raynermdz.raynermendezportfolioserver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,6 +13,9 @@ import java.util.List;
 import static javax.persistence.TemporalType.DATE;
 
 @Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -51,11 +52,10 @@ public class Post extends BaseEntity {
     private Boolean isHidden;
 
 //    @Column(name = "post_picture", unique = false, nullable = true)
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Picture postPicture;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User user;
 
     @OneToMany(

@@ -3,6 +3,7 @@ package com.raynermdz.raynermendezportfolioserver.controllers.v1;
 import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.CommentRequestDto;
 import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.CommentResponseDto;
 import com.raynermdz.raynermendezportfolioserver.services.CommentService;
+import com.raynermdz.raynermendezportfolioserver.services.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,9 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @PostMapping
-    public ResponseEntity<CommentResponseDto> saveComment(CommentRequestDto comment) {
+    @PostMapping(value = "{postId}")
+    public ResponseEntity<CommentResponseDto> saveComment(@RequestBody CommentRequestDto comment,
+                                                          @PathVariable(value = "postId") UUID postId) {
         return null;
     }
 
@@ -33,8 +35,9 @@ public class CommentController {
         return null;
     }
 
-    @PutMapping
-    public ResponseEntity<CommentResponseDto> updateComment(CommentRequestDto comment) {
+    @PutMapping(value = "{postId}")
+    public ResponseEntity<CommentResponseDto> updateComment(@RequestBody CommentRequestDto comment,
+                                                            @PathVariable(value = "postId") UUID postId) {
         return null;
     }
 

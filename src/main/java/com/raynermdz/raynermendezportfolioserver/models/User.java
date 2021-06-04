@@ -64,7 +64,7 @@ public class User extends BaseEntity {
     @Column(name = "modified_date", unique = false, nullable = true)
     private Date modifiedDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Picture picture;
 
     @OneToMany(

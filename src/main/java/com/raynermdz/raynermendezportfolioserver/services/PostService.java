@@ -9,10 +9,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface PostService {
-    Optional<PostResponseDto> savePost(PostRequestDto post);
+    Optional<PostResponseDto> savePost(PostRequestDto post, UUID userId);
     Optional<List<PostResponseDto>> getAllPostsByUserId(UUID userId);
     Optional<PostResponseDto> getPostById(UUID postId) throws EntityNotFoundException;
-    Optional<PostResponseDto> updatePost(PostRequestDto post);
+    Optional<PostResponseDto> updatePost(PostRequestDto post, UUID userId);
     Boolean deletePost(UUID postId);
     Boolean activatePost(UUID postId);
     Boolean deactivatePost(UUID postId);

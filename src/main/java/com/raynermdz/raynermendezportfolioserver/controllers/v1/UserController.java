@@ -33,10 +33,7 @@ public class UserController {
     @GetMapping(value = "{userId}")
     public ResponseEntity<UserResponseDto> getUserById(@PathVariable("userId") UUID userId) {
 
-        return new ResponseEntity<>(this.userService.getUserById(userId), HttpStatus.OK);
-
-//        return user.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-//                .orElseGet(() -> new ResponseEntity<>(new User(), HttpStatus.NOT_FOUND));
+      return new ResponseEntity<>(this.userService.getUserById(userId).get(), HttpStatus.OK);
 
     }
 

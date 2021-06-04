@@ -35,7 +35,6 @@ public class Comment extends BaseEntity {
     @Column(name = "is_hidden", unique = false, nullable = true)
     private Boolean isHidden;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Post post;
 }

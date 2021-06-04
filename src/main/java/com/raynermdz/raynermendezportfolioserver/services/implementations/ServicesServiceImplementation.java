@@ -1,5 +1,9 @@
 package com.raynermdz.raynermendezportfolioserver.services.implementations;
 
+import com.raynermdz.raynermendezportfolioserver.dtos.converter.DtoConverter;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.ServiceRequestDto;
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.ServiceResponseDto;
+import com.raynermdz.raynermendezportfolioserver.exception.EntityNotFoundException;
 import com.raynermdz.raynermendezportfolioserver.models.Service;
 import com.raynermdz.raynermendezportfolioserver.models.User;
 import com.raynermdz.raynermendezportfolioserver.repositories.ServiceRepository;
@@ -7,6 +11,7 @@ import com.raynermdz.raynermendezportfolioserver.repositories.UserRepository;
 import com.raynermdz.raynermendezportfolioserver.services.ServicesService;
 import lombok.AllArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -17,39 +22,51 @@ public class ServicesServiceImplementation implements ServicesService {
 
     private final ServiceRepository serviceRepository;
     private final UserRepository userRepository;
+    private final DtoConverter dtoConverter;
 
     @Override
-    public Optional<Service> saveService(Service service) {
-        return Optional.of(this.serviceRepository.save(service));
-    }
-
-    @Override
-    public Optional<List<Service>> getAllServicesByUserId(UUID userId) {
+    public Optional<ServiceResponseDto> saveService(ServiceRequestDto serviceRequestDto, UUID userId) {
         Optional<User> user = this.userRepository.findById(userId);
 
         if (user.isPresent()) {
-            return Optional.of(user.get().getServices());
+            Service service = (Service) this.dtoConverter.convertToEntity(serviceRequestDto, new Service());
+            service.setIsHidden(false);
+            service.setCreatedDate(new Date());
+            service.setUser(user.get());
+
+            ServiceResponseDto response = (ServiceResponseDto) this.dtoConverter.convertToDto(this.serviceRepository.save(service), new ServiceResponseDto());
+            return Optional.of(response);
         }
+        throw new EntityNotFoundException(User.class, "id", userId.toString());
+    }
+
+    @Override
+    public Optional<List<ServiceResponseDto>> getAllServicesByUserId(UUID userId) {
+        Optional<User> user = this.userRepository.findById(userId);
+
+//        if (user.isPresent()) {
+//            return Optional.of(user.get().getServices());
+//        }
         return Optional.empty();
     }
 
     @Override
-    public Optional<Service> getServiceById(UUID serviceId) {
+    public Optional<ServiceResponseDto> getServiceById(UUID serviceId) {
         Optional<Service> service = this.serviceRepository.findById(serviceId);
 
-        if (service.isPresent()) {
-            return service;
-        }
+//        if (service.isPresent()) {
+//            return service;
+//        }
         return Optional.empty();
     }
 
     @Override
-    public Optional<Service> updateService(Service service) {
+    public Optional<ServiceResponseDto> updateService(ServiceRequestDto service, UUID userId) {
         Optional<Service> foundService = this.serviceRepository.findById(service.getId());
 
-        if (foundService.isPresent()) {
-            return Optional.of(this.serviceRepository.save(foundService.get()));
-        }
+//        if (foundService.isPresent()) {
+//            return Optional.of(this.serviceRepository.save(foundService.get()));
+//        }
         return Optional.empty();
     }
 

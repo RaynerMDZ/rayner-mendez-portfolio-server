@@ -1,10 +1,8 @@
 package com.raynermdz.raynermendezportfolioserver.bootstrap;
 
 import com.raynermdz.raynermendezportfolioserver.models.*;
-import com.raynermdz.raynermendezportfolioserver.services.PictureService;
-import com.raynermdz.raynermendezportfolioserver.services.PostService;
-import com.raynermdz.raynermendezportfolioserver.services.ServicesService;
-import com.raynermdz.raynermendezportfolioserver.services.UserService;
+import com.raynermdz.raynermendezportfolioserver.repositories.UserRepository;
+
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -12,18 +10,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+
 
 @AllArgsConstructor
 @Component
 @Profile(value = "dev")
 public class DataInitializer implements CommandLineRunner {
 
-    private final UserService userService;
-    private final PictureService pictureService;
-    private final ServicesService servicesService;
-    private final PostService postService;
+    private final UserRepository userService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -32,14 +26,19 @@ public class DataInitializer implements CommandLineRunner {
                 "Rayner", "Enmanuel", "Mendez Garcia",
                 "raynermendez@portfolio.com", "1234567890", "Software Engineer",
                 "Looking for a job" ,"github.com", "linkedin.com", "twitter.com",
-                "youtube.com", new Date(), null, null, new ArrayList<>(),
+                "youtube.com", new Date(), null, new Picture(), new ArrayList<>(),
                 new ArrayList<>(), new ArrayList<>());
 
-
         Post post = new Post("First Post", "This is a post", "github.com", "post.com",
-                new Date(), null, false, null, user, new ArrayList<>(),
+                new Date(), null, false, new Picture(), user, new ArrayList<>(),
                 new ArrayList<>());
+
+        Post post2 = new Post("Second Post", "This is a post", "github.com", "post.com",
+                new Date(), null, false, new Picture(), user, new ArrayList<>(),
+                new ArrayList<>());
+
         user.getPosts().add(post);
+        user.getPosts().add(post2);
 
         Picture picture = new Picture();
         picture.setPictureUrl("picture.com");
@@ -57,6 +56,22 @@ public class DataInitializer implements CommandLineRunner {
         comment.setIsHidden(false);
         post.getComments().add(comment);
 
+        Comment comment2 = new Comment();
+        comment2.setPost(post2);
+        comment2.setCreatedDate(new Date());
+        comment2.setName("John Doe");
+        comment2.setBody("This is a comment.");
+        comment2.setIsHidden(false);
+        post2.getComments().add(comment2);
+
+        Comment comment3 = new Comment();
+        comment3.setPost(post2);
+        comment3.setCreatedDate(new Date());
+        comment3.setName("John Doe");
+        comment3.setBody("This is a comment.");
+        comment3.setIsHidden(false);
+        post2.getComments().add(comment3);
+
         Service service = new Service();
         service.setUser(user);
         service.setService("Frontend");
@@ -73,8 +88,17 @@ public class DataInitializer implements CommandLineRunner {
         skill.setCreatedDate(new Date());
         user.getSkills().add(skill);
 
+        User savedUser = this.userService.save(user);
 
-        User savedUser = this.userService.saveUser(user);
+        Picture picture2 = new Picture();
+        picture2.setPictureUrl("picture.com");
+        picture2.setIsHidden(false);
+        picture2.setCreatedDate(new Date());
+        picture2.setPictureName("picture");
+
+        savedUser.setPicture(picture2);
+
+        this.userService.save(savedUser);
 
         System.out.println(
                 "User ID: " + savedUser.getId() + "\nPost ID: " + savedUser.getPosts().get(0).getId()

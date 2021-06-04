@@ -5,4 +5,6 @@ import lombok.Data;
 
 @Data
 public class SkillRequestDto extends BaseDto {
+    private String skill;
+    private String description;
 }

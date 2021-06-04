@@ -27,8 +27,9 @@ public class PostController {
     }
 
     @GetMapping(value = "{userId}/user-posts")
-    public ResponseEntity<List<Post>> getAllPostsByUserId(@PathVariable(value = "userId") UUID userId) {
-        return null;
+    public ResponseEntity<List<PostResponseDto>> getAllPostsByUserId(@PathVariable(value = "userId") UUID userId) {
+
+        return new ResponseEntity<>(this.postService.getAllPostsByUserId(userId).get(), HttpStatus.OK);
     }
 
     @GetMapping(value = "{postId}")

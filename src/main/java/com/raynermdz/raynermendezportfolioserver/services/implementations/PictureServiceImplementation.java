@@ -1,5 +1,6 @@
 package com.raynermdz.raynermendezportfolioserver.services.implementations;
 
+import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.PictureResponseDto;
 import com.raynermdz.raynermendezportfolioserver.models.Picture;
 import com.raynermdz.raynermendezportfolioserver.models.Post;
 import com.raynermdz.raynermendezportfolioserver.repositories.PictureRepository;
@@ -23,53 +24,53 @@ public class PictureServiceImplementation implements PictureService {
     private final UserRepository userRepository;
 
     @Override
-    public Optional<List<Picture>> getAllPicturesByPostId(UUID postId) {
+    public Optional<List<PictureResponseDto>> getAllPicturesByPostId(UUID postId) {
         Optional<Post> post = this.postRepository.findById(postId);
 
-        if (post.isPresent()) {
-            return Optional.of(post.get().getPictures());
-        }
+//        if (post.isPresent()) {
+//            return Optional.of(post.get().getPictures());
+//        }
         return Optional.empty();
     }
 
     @Override
-    public Optional<Picture> getPostPictureById(UUID pictureId) {
+    public Optional<PictureResponseDto> getPostPictureById(UUID pictureId) {
         Optional<Picture> picture = this.pictureRepository.findById(pictureId);
 
-        if (picture.isPresent()) {
-            return picture;
-        }
+//        if (picture.isPresent()) {
+//            return picture;
+//        }
 
         return Optional.empty();
     }
 
     @Override
-    public Optional<Picture> savePostPicture(UUID postId, MultipartFile picture) {
+    public Optional<PictureResponseDto> savePostPicture(UUID postId, MultipartFile picture) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Picture> updatePostPicture(UUID postId, MultipartFile picture) {
+    public Optional<PictureResponseDto> updatePostPicture(UUID postId, MultipartFile picture) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Picture> savePostMainPicture(UUID postId, MultipartFile picture) {
+    public Optional<PictureResponseDto> savePostMainPicture(UUID postId, MultipartFile picture) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Picture> updatePostMainPicture(UUID postId, MultipartFile picture) {
+    public Optional<PictureResponseDto> updatePostMainPicture(UUID postId, MultipartFile picture) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Picture> saveUserPicture(UUID userId, MultipartFile picture) {
+    public Optional<PictureResponseDto> saveUserPicture(UUID userId, MultipartFile picture) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Picture> updateUserPicture(UUID userId, MultipartFile picture) {
+    public Optional<PictureResponseDto> updateUserPicture(UUID userId, MultipartFile picture) {
         return Optional.empty();
     }
 

@@ -5,4 +5,6 @@ import lombok.Data;
 
 @Data
 public class CommentRequestDto extends BaseDto {
+    private String name;
+    private String body;
 }

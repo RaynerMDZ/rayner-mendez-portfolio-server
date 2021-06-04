@@ -8,10 +8,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CommentService {
-    Optional<CommentResponseDto> saveComment(CommentRequestDto comment);
+    Optional<CommentResponseDto> saveComment(CommentRequestDto comment, UUID postId);
     Optional<List<CommentResponseDto>> getAllCommentsByPostId(UUID postId);
     Optional<CommentResponseDto> getCommentById(UUID commentId);
-    Optional<CommentResponseDto> updateComment(CommentRequestDto comment);
+    Optional<CommentResponseDto> updateComment(CommentRequestDto comment, UUID postId);
     Boolean deleteComment(UUID commentId);
     Boolean activateComment(UUID commentId);
     Boolean deactivateComment(UUID commentId);

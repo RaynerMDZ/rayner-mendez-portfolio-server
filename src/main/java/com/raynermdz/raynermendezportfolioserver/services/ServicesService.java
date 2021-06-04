@@ -9,10 +9,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ServicesService {
-    Optional<ServiceResponseDto> saveService(ServiceRequestDto service);
+    Optional<ServiceResponseDto> saveService(ServiceRequestDto service, UUID userId);
     Optional<List<ServiceResponseDto>> getAllServicesByUserId(UUID userId);
     Optional<ServiceResponseDto> getServiceById(UUID serviceId);
-    Optional<ServiceResponseDto> updateService(ServiceRequestDto service);
+    Optional<ServiceResponseDto> updateService(ServiceRequestDto service, UUID userId);
     Boolean deleteService(UUID serviceId);
     Boolean activateService(UUID serviceId);
     Boolean deactivateService(UUID serviceId);

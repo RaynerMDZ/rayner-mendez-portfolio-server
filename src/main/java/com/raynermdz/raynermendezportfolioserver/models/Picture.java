@@ -38,8 +38,7 @@ public class Picture extends BaseEntity {
     @Column(name = "modified_date", unique = false, nullable = true)
     private Date modifiedDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Post post;
 
 //    @OneToOne
