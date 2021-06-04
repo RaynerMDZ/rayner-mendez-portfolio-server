@@ -54,6 +54,9 @@ public class User extends BaseEntity {
     @Column(name = "youtube", unique = false, nullable = true)
     private String youtube;
 
+    @Column(name = "is_active", unique = false, nullable = true)
+    private Boolean isActive;
+
     @Temporal(DATE)
     @DateTimeFormat(pattern = "MMM-dd-YYYY")
     @Column(name = "created_date", unique = false, nullable = true)

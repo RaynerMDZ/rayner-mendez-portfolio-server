@@ -24,8 +24,8 @@ public class Skill extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "is_hidden", unique = false, nullable = true)
-    private Boolean isHidden;
+    @Column(name = "is_active", unique = false, nullable = true)
+    private Boolean isActive;
 
     @Temporal(DATE)
     @DateTimeFormat(pattern = "MMM-dd-YYYY")

@@ -42,7 +42,7 @@ public class DataInitializer implements CommandLineRunner {
 
         Picture picture = new Picture();
         picture.setPictureUrl("picture.com");
-        picture.setIsHidden(false);
+        picture.setIsActive(false);
         picture.setCreatedDate(new Date());
         picture.setPost(post);
         picture.setPictureName("picture");
@@ -53,7 +53,7 @@ public class DataInitializer implements CommandLineRunner {
         comment.setCreatedDate(new Date());
         comment.setName("John Doe");
         comment.setBody("This is a comment.");
-        comment.setIsHidden(false);
+        comment.setIsActive(false);
         post.getComments().add(comment);
 
         Comment comment2 = new Comment();
@@ -61,7 +61,7 @@ public class DataInitializer implements CommandLineRunner {
         comment2.setCreatedDate(new Date());
         comment2.setName("John Doe");
         comment2.setBody("This is a comment.");
-        comment2.setIsHidden(false);
+        comment2.setIsActive(false);
         post2.getComments().add(comment2);
 
         Comment comment3 = new Comment();
@@ -69,7 +69,7 @@ public class DataInitializer implements CommandLineRunner {
         comment3.setCreatedDate(new Date());
         comment3.setName("John Doe");
         comment3.setBody("This is a comment.");
-        comment3.setIsHidden(false);
+        comment3.setIsActive(false);
         post2.getComments().add(comment3);
 
         Service service = new Service();
@@ -77,14 +77,14 @@ public class DataInitializer implements CommandLineRunner {
         service.setService("Frontend");
         service.setCreatedDate(new Date());
         service.setDescription("This is a service.");
-        service.setIsHidden(false);
+        service.setIsActive(false);
         user.getServices().add(service);
 
         Skill skill = new Skill();
         skill.setUser(user);
         skill.setSkill("Java");
         skill.setDescription("This is a skill.");
-        skill.setIsHidden(false);
+        skill.setIsActive(false);
         skill.setCreatedDate(new Date());
         user.getSkills().add(skill);
 
@@ -92,7 +92,7 @@ public class DataInitializer implements CommandLineRunner {
 
         Picture picture2 = new Picture();
         picture2.setPictureUrl("picture.com");
-        picture2.setIsHidden(false);
+        picture2.setIsActive(false);
         picture2.setCreatedDate(new Date());
         picture2.setPictureName("picture");
 

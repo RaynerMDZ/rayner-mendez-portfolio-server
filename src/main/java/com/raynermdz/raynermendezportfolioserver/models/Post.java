@@ -48,8 +48,8 @@ public class Post extends BaseEntity {
     @Column(name = "modified_date", unique = false, nullable = true)
     private Date modifiedDate;
 
-    @Column(name = "is_hidden", unique = false, nullable = true)
-    private Boolean isHidden;
+    @Column(name = "is_active", unique = false, nullable = true)
+    private Boolean isActive;
 
 //    @Column(name = "post_picture", unique = false, nullable = true)
     @OneToOne(cascade = CascadeType.ALL)

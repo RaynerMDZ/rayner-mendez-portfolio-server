@@ -30,7 +30,7 @@ public class ServicesServiceImplementation implements ServicesService {
 
         if (user.isPresent()) {
             Service service = (Service) this.dtoConverter.convertToEntity(serviceRequestDto, new Service());
-            service.setIsHidden(false);
+            service.setIsActive(false);
             service.setCreatedDate(new Date());
             service.setUser(user.get());
 
@@ -86,7 +86,7 @@ public class ServicesServiceImplementation implements ServicesService {
         Optional<Service> service = this.serviceRepository.findById(serviceId);
 
         if (service.isPresent()) {
-            service.get().setIsHidden(true);
+            service.get().setIsActive(true);
             this.serviceRepository.save(service.get());
             return true;
         }
@@ -98,7 +98,7 @@ public class ServicesServiceImplementation implements ServicesService {
         Optional<Service> service = this.serviceRepository.findById(serviceId);
 
         if (service.isPresent()) {
-            service.get().setIsHidden(false);
+            service.get().setIsActive(false);
             this.serviceRepository.save(service.get());
             return true;
         }

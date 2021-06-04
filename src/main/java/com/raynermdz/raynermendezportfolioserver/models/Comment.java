@@ -32,8 +32,8 @@ public class Comment extends BaseEntity {
     @Column(name = "created_date", unique = false, nullable = true)
     private Date createdDate;
 
-    @Column(name = "is_hidden", unique = false, nullable = true)
-    private Boolean isHidden;
+    @Column(name = "is_active", unique = false, nullable = true)
+    private Boolean isActive;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Post post;

@@ -25,8 +25,8 @@ public class Picture extends BaseEntity {
     @Column(name = "picture_url", unique = false, nullable = true)
     private String pictureUrl;
 
-    @Column(name = "is_hidden", unique = false, nullable = true)
-    private Boolean isHidden;
+    @Column(name = "is_active", unique = false, nullable = true)
+    private Boolean isActive;
 
     @Temporal(DATE)
     @DateTimeFormat(pattern = "MMM-dd-YYYY")

@@ -2,7 +2,6 @@ package com.raynermdz.raynermendezportfolioserver.services.implementations;
 
 import com.raynermdz.raynermendezportfolioserver.dtos.converter.DtoConverter;
 import com.raynermdz.raynermendezportfolioserver.dtos.v1.requestdto.SkillRequestDto;
-import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.ServiceResponseDto;
 import com.raynermdz.raynermendezportfolioserver.dtos.v1.responsedto.SkillResponseDto;
 import com.raynermdz.raynermendezportfolioserver.exception.EntityNotFoundException;
 import com.raynermdz.raynermendezportfolioserver.models.Skill;
@@ -32,7 +31,7 @@ public class SkillServiceImplementation implements SkillService {
 
         if (user.isPresent()) {
             Skill skill = (Skill) this.dtoConverter.convertToEntity(skillRequestDto, new Skill());
-            skill.setIsHidden(false);
+            skill.setIsActive(false);
             skill.setCreatedDate(new Date());
             skill.setUser(user.get());
 

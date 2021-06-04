@@ -5,9 +5,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.FetchType;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

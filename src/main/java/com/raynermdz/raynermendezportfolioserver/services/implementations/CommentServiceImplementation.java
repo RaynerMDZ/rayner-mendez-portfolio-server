@@ -29,7 +29,7 @@ public class CommentServiceImplementation implements CommentService {
 
         if (post.isPresent()) {
             Comment comment = (Comment) this.dtoConverter.convertToEntity(commentRequestDto, new Comment());
-            comment.setIsHidden(false);
+            comment.setIsActive(false);
             comment.setCreatedDate(new Date());
             comment.setPost(post.get());
 
@@ -91,7 +91,7 @@ public class CommentServiceImplementation implements CommentService {
         Optional<Comment> comment = this.commentRepository.findById(commentId);
 
         if (comment.isPresent()) {
-            comment.get().setIsHidden(true);
+            comment.get().setIsActive(true);
             this.commentRepository.save(comment.get());
             return true;
         }
@@ -103,7 +103,7 @@ public class CommentServiceImplementation implements CommentService {
         Optional<Comment> comment = this.commentRepository.findById(commentId);
 
         if (comment.isPresent()) {
-            comment.get().setIsHidden(false);
+            comment.get().setIsActive(false);
             this.commentRepository.save(comment.get());
             return true;
         }

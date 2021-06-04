@@ -34,7 +34,7 @@ public class PostServiceImplementation implements PostService {
 
         if (user.isPresent()) {
             Post post = (Post) this.dtoConverter.convertToEntity(postRequestDto, new Post());
-            post.setIsHidden(false);
+            post.setIsActive(false);
             post.setCreatedDate(new Date());
             post.setUser(user.get());
 
@@ -117,7 +117,7 @@ public class PostServiceImplementation implements PostService {
         Optional<Post> post = this.postRepository.findById(postId);
 
         if (post.isPresent()) {
-            post.get().setIsHidden(true);
+            post.get().setIsActive(true);
             this.postRepository.save(post.get());
             return true;
         }
@@ -129,7 +129,7 @@ public class PostServiceImplementation implements PostService {
         Optional<Post> post = this.postRepository.findById(postId);
 
         if (post.isPresent()) {
-            post.get().setIsHidden(false);
+            post.get().setIsActive(false);
             this.postRepository.save(post.get());
             return true;
         }
